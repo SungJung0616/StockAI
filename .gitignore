@@ -27,3 +27,9 @@ htmlcov/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Local market data artifacts
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep

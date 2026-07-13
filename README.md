@@ -233,12 +233,27 @@ Combine validated market intelligence and explainable AI analysis into a structu
 
 ```text
 StockAI/
-├── AGENTS.md        # Rules for human and AI contributors
-├── ARCHITECTURE.md  # Repository-level architecture documentation
-└── README.md        # Project philosophy and development entry point
+├── src/stockai/
+│   ├── collection/    # External data retrieval and validation
+│   ├── storage/       # PostgreSQL, JSONB, and artifact persistence
+│   ├── intelligence/  # Deterministic market intelligence
+│   ├── analysis/      # Explainable AI analysis
+│   ├── presentation/  # Human-facing research views
+│   └── jobs/          # Scheduled workflow orchestration
+├── tests/
+│   ├── unit/          # Isolated deterministic tests
+│   ├── integration/   # Controlled boundary tests
+│   └── fixtures/      # Small non-proprietary test inputs
+├── data/
+│   ├── raw/           # Local immutable source responses
+│   └── processed/     # Local normalized and derived artifacts
+├── AGENTS.md          # Rules for human and AI contributors
+├── ARCHITECTURE.md    # Repository-level architecture mapping
+└── README.md          # Project philosophy and development entry point
 ```
 
-The implementation structure will be added after the Phase 1 development environment and module boundaries are approved.
+Generated data under `data/raw` and `data/processed` is excluded from Git. Each package README
+defines its responsibility and prohibited concerns.
 
 ## Next Milestone
 
