@@ -35,6 +35,11 @@ Scheduled jobs coordinate this flow without owning its business logic.
 Dependencies should flow from orchestration toward explicit interfaces. Data-provider,
 persistence, intelligence, AI, and presentation concerns must remain separable and testable.
 
+`stockai.intelligence` exclusively owns deterministic market calculations and scoring.
+`stockai.analysis` consumes those results to produce AI-assisted explanations, risks,
+conflicting-signal summaries, historical context, and confidence notes. Analysis must never own
+or alter the underlying score calculations.
+
 ## Testing Boundaries
 
 - `tests/unit/` isolates external systems and validates deterministic behavior.
