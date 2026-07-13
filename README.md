@@ -160,6 +160,44 @@ The AI analysis should:
 - Estimate confidence
 - Produce concise market summaries
 
+## Development Environment
+
+StockAI uses CPython 3.13 and [uv](https://docs.astral.sh/uv/) for Python version,
+virtual environment, dependency, and lockfile management.
+
+### Prerequisites
+
+- Git
+- uv
+
+On Windows, install uv with the official installer:
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Restart the terminal after installation, then prepare the project environment:
+
+```powershell
+git clone https://github.com/SungJung0616/StockAI.git
+cd StockAI
+uv python install 3.13
+uv sync
+```
+
+Run all Python and development commands through uv:
+
+```powershell
+uv run python --version
+uv run ruff check .
+uv run mypy .
+uv run pytest
+```
+
+The local `.venv` directory is managed by uv and must not be committed. Runtime
+dependencies belong in `[project.dependencies]`; development-only tools belong in
+`[dependency-groups].dev`. Commit `uv.lock` whenever dependencies change.
+
 ## Development Workflow
 
 1. Read `AGENTS.md` and the relevant Notion decisions.
